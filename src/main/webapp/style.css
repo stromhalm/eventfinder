@@ -1,0 +1,1147 @@
+
+body, html {
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+    background-color: #F1F1F1;
+    color: rgba(0, 0, 0, 0.87);
+    font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
+    height: 100%;
+    width: 100%;
+}
+
+/************/
+/*Navigation*/
+/************/
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.developer {
+    width: 50%;
+    float: left;
+}
+
+.contact {
+    width: 50%;
+    float: left;
+    margin-bottom: 50px;
+}
+
+.overview {
+    width: 100%;
+    min-height: 150px;
+    margin: 20px 0;
+    margin-bottom: 50px;
+}
+
+.overview label {
+    width: 50%;
+    float: left;
+}
+
+.overview .logo {
+    margin: 0 10%;
+    float: right;
+    opacity: 0.9;
+    border-radius: 15px 50px;
+    box-shadow: -3px 6px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+/*Appearance of Search Bar and CategoryLabel*/
+nav input[type=search] {
+    width: 100%;
+    height: 50px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.87);
+    -webkit-appearance: none;
+    border: none;
+    font-weight: 500;
+
+    background: transparent url(/Images/magnifyingGlass.png) no-repeat scroll left center;
+    background-size: 20px 20px;
+    padding: 0;
+    padding-left: 20px;
+}
+
+nav input[type=search]:focus {
+    outline: none;
+}
+
+nav input[type=search]:-moz-placeholder {
+
+}
+
+form {
+    width: 100%;
+    -webkit-transition: width 50ms;
+    -moz-transition: width 50ms;
+    -o-transition: width 50ms;
+    transition: width 50ms;
+}
+
+/*Category Style and hide by default*/
+.categoryLabel {
+    display: none;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.87);
+    float: left;
+    width: 20%;
+    background-color: rgb(63, 81, 181);
+}
+
+.categoryEnabled .categoryLabel {
+    display: block;
+}
+
+.categoryLabel:hover {
+    background-color: rgb(121, 134, 203);
+}
+
+.categoryLabel .categoryActive {
+    float: right;
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+/*Make category visible and resize searchBox form*/
+.categoryEnabled #search {
+    float: left;
+    width: calc(80% - 20px);
+}
+
+/*Remove generic padding and ul styling*/
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+/*Create the horizontal navigation bar elements*/
+nav ul li {
+    display: inline-block;
+    float: left;
+    margin-right: 0;
+    width: 20%;
+}
+
+nav > ul > li {
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 4px -1px;
+}
+
+.searchBox {
+    width: 60%;
+}
+
+nav li.childmenu {
+    width: 100%;
+}
+
+/*Style for menu links*/
+.menuButton a, .title a {
+    display: block;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: rgba(255, 255, 255, 0.87);
+    background: #363636;
+    text-decoration: none;
+
+    -webkit-transition: background 0.3s ease;
+    -moz-transition: background 0.3s ease;
+    -o-transition: background 0.5s ease;
+    /*-ms-transition: background 0.3s ease; kann jemand mit IE das hier testen? "Unknown CSS property transition*/
+    transition: background 0.3s ease;
+}
+
+/*Style for social media links*/
+nav li.socialSharingButton {
+    color: #000;
+    z-index: 5;
+    background: #000;
+    width: 100%;
+    text-align: center;
+}
+
+/*Hover state for navbar links*/
+.menuButton:hover a, .title:hover a {
+    background: rgb(63, 81, 181);
+}
+
+/*Style for dropdown links*/
+.menuButton:hover ul a {
+    background: rgb(63, 81, 181);
+    color: rgba(255, 255, 255, 0.87);
+    opacity: 0.93;
+}
+
+/*Hover state for dropdown links*/
+.menuButton:hover ul a:hover {
+    background: #363636;
+}
+
+/*Hide dropdown links while in desktop view*/
+.menuButton ul {
+    display: none;
+}
+
+/*Make dropdown links vertical*/
+.menuButton ul li {
+    display: block;
+    float: none;
+}
+
+/*Prevent text wrapping*/
+.menuButton ul li a {
+    width: auto;
+    min-width: 100px;
+    padding: 0 20px;
+}
+
+/*Hover change for resultList and checkbox-content*/
+.display label:hover {
+    color: black;
+}
+
+/*Display the dropdown on hover*/
+.menuButton a:hover + .dropDown, .dropDown:hover {
+    display: block;
+}
+
+/*Style hamburger menu button and hide it by default*/
+nav .showMenu {
+    text-decoration: none;
+    color: #fff;
+    background: #363636;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    float: right;
+    display: none;
+    line-height: 50px;
+}
+
+/*Hide checkbox*/
+input[type=checkbox] {
+    display: none;
+}
+
+/*Show menu when hidden checkbox is checked*/
+input[type=checkbox]:checked ~ nav {
+    display: block;
+}
+
+/**********/
+/*Main Map*/
+/**********/
+
+main {
+    padding-top: 50px;
+    z-index: 2;
+}
+
+main, .mapContainer {
+    height: 100%;
+    width: 100%;
+}
+
+/**************/
+/***Tab-Menu***/
+/**************/
+
+.tabs {
+    display: none;
+}
+
+.tabs li {
+    width: 33.33%;
+}
+
+.tabs input[type="radio"] {
+    display: none;
+}
+
+.tabs label {
+    display: block;
+    font-size: 15px;
+    height: 45px;
+    text-align: center;
+    line-height: 43px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-color: #fff;
+}
+
+.tab-content {
+    border-radius: 0 0 4px 4px;
+}
+
+#tab-content1 .results li {
+    height: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    color: black;
+    transition: color .5s;
+    float: left;
+    text-align: left;
+    overflow: hidden;
+}
+
+.tabs .tab-content {
+    z-index: 2;
+    display: none;
+    font-size: 14px;
+    line-height: 5px;
+    position: absolute;
+    border-bottom: 1px solid #D8D8D8;
+    width: 100%;
+    left: 0;
+    background: #f6f6f6;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.tabs [id^="tab"]:checked + label {
+    color: rgb(63, 81, 181);
+    cursor: default;
+    height: 43px;
+    border-bottom: 2px solid #0f0;
+}
+
+.tabs [id^="tab"]:not(:checked) + label {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.tabs [id^="tab"]:not(:checked) + label:hover {
+    color: #000;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.tabs [id="tab1"]:checked ~ [id="tab-content1"] {
+    display: block;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    max-height: 400px;
+}
+
+.tabs [id="tab2"]:checked ~ [id="tab-content2"] {
+    display: block;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabs [id="tab3"]:checked ~ [id="tab-content3"] {
+    display: block;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabs p, h3 {
+    padding-left: 10px;
+}
+
+.tabs #activity:focus {
+    border-color: blue;
+}
+
+.tabs #city:focus {
+    border-color: blue;
+}
+
+/***********/
+/* Results */
+/***********/
+
+/*List the Results by searching in search*/
+#resultContainer {
+    margin-left: 20%;
+    width: 60%;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 4px -1px;
+    margin-top: 50px;
+    position: absolute;
+}
+
+.resultList {
+    line-height: .75em;
+    letter-spacing: .01em;
+    cursor: pointer;
+    min-height: 96px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.resultList h2 {
+    padding-left: 20px;
+}
+
+.resultList .sourceLink, .resultList .like {
+    display: none;
+}
+
+.openMarker {
+    padding: 10px 0 5px 0;
+}
+
+.resultList h3, .resultList h4, .resultList h5, .resultList p {
+    padding-left: 52px;
+}
+
+.resultList:hover, .resultList.selected {
+    background-color: rgba(158, 158, 158, 0.2);
+}
+
+.result h3 {
+    font-weight: normal;
+    margin-bottom: 6px;
+    margin: 0;
+    padding: 0;
+    line-height: 16px;
+}
+
+.result h4 {
+    line-height: 16px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 0;
+    float: right;
+}
+
+.result h5 {
+    line-height: 16px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+
+.result p {
+    line-height: 16px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.541176);
+}
+
+.result .like {
+    color: #4889F3;
+    text-decoration: none;
+}
+
+.result .sourceLink {
+    float: right;
+    color: #999;
+    text-decoration: none;
+}
+
+.result .sourceLink:hover {
+    text-decoration: underline;
+}
+
+.result .marker {
+    float: left;
+    margin: 5px 15px;
+}
+
+.result .sideButton {
+    float: right;
+    word-wrap: break-word;
+    text-align: center;
+    border-left: 1px solid rgba(51, 51, 51, 0.35);
+    background-color: rgba(158, 158, 158, 0.2);
+    padding: 20px 10px;
+    margin: 10px;
+    margin-right: 0;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.541176);
+    text-decoration: none;
+    line-height: 14px;
+
+    -webkit-transition: box-shadow 0.3s ease;
+    -moz-transition: box-shadow 0.3s ease;
+    -o-transition: box-shadow 0.3s ease;
+    -ms-transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
+}
+
+.result img {
+    margin: 0 1%; /* For Line Break */
+}
+
+.result .sideButton .glyphicon {
+    color: #4889F3;
+    font-size: 20px;
+}
+
+.result .openNavigation {
+    display: none;
+}
+
+.infoWindow .openMarker {
+    padding: 0;
+}
+
+.infoWindow {
+    width: 400px;
+    padding: 10px;
+    padding-right: 0;
+    max-width: 96%;
+}
+
+/* Toggle external navigation */
+.navMode .showDirection {
+    display: none;
+}
+
+.navMode .openNavigation {
+    display: block;
+}
+
+.infoWindow .marker {
+    display: none;
+}
+
+/**************/
+/* Categories */
+/**************/
+
+#categoryContainer .categoryButton {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: rgb(63, 81, 181);
+    margin: 10px;
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 14px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.258824) 0px 2px 5px 0px;
+    padding: 20px 10px;
+    height: auto;
+}
+
+/* Button icon */
+#categoryContainer .categoryButton .glyphicon {
+    font-size: 25px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.category_content {
+    float: left;
+    width: 33.33%;
+}
+
+.subContainer {
+    margin: 12px;
+    padding-top: 0;
+    background-color: rgb(201, 221, 255);
+    border-radius: 3px;
+    overflow: auto;
+    color: rgba(0, 0, 0, 0.541176);
+    font-weight: bold;
+    text-align: center;
+}
+
+#categoryContainer .categoryButton:hover {
+    background-color: rgb(121, 134, 203);
+    transition: none;
+}
+
+#categoryContainer .categoryButton.selected {
+    background-color: rgb(121, 134, 203);
+    transition: none;
+}
+
+#categoryContainer input[name=category]:checked + label {
+    background-color: rgba(0, 217, 0, 0.88);
+}
+
+#categoryContainer input[name=category]:checked + .selected {
+    background-color: rgba(154, 217, 143, 0.88);
+}
+
+#categoryContainer form {
+    width: 100%;
+}
+
+/*****************/
+/* Feeling lucky */
+/*****************/
+
+.luckyContainer {
+    background-color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+    line-height: 50px;
+}
+
+select, option {
+    font-size: 16px;
+}
+
+.formSubmit {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: rgb(63, 81, 181);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+/*****************/
+/* Content Pages */
+/*****************/
+
+article {
+    display: none;
+    position: absolute;
+    z-index: 20;
+}
+
+article header {
+    position: fixed;
+    top: 20%;
+    left: calc(10% - 24px);
+    width: 80%;
+    background-color: rgb(201, 221, 255);
+    color: rgba(0, 0, 0, 0.54);
+    padding: 13px 24px;
+    z-index: 9;
+}
+
+article .content {
+    position: fixed;
+    top: 20%;
+    left: calc(10% - 24px);
+    padding: 50px 24px 40px 24px;
+    font-size: 16px;
+    line-height: 1.6em;
+    width: 80%;
+    height: calc(70% - 74px);
+    color: rgba(0, 0, 0, .87);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    float: left;
+    background-color: white;
+    box-shadow: 0 8px 10px -5px rgba(0, 0, 0, .2), 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12);
+}
+
+article .close {
+    bottom: calc(10% - 17px);
+    left: 10%;
+    position: fixed;
+    z-index: 99999;
+    border-top: 1px solid rgba(0, 0, 0, 0.117647);
+    width: calc(80% + 48px);
+    height: 50px;
+    background-color: white;
+    margin-left: -24px;
+}
+
+article .close a {
+    color: rgb(63, 81, 181);
+    font-size: 14px;
+    padding: 20px;
+    text-decoration: none;
+    float: right;
+    letter-spacing: 0.14px;
+    text-transform: uppercase;
+}
+
+.share-buttons {
+    margin-top: 20px;
+}
+
+.share-buttons .share-button {
+    margin: 20px;
+}
+
+#mapCanvas {
+    height: 100%; /* For old browsers (scrollbar visible) */
+    height: calc(100% - 50px); /* For newer browsers */
+    width: 100%;
+    position: fixed;
+}
+
+#locateMeButton {
+    width: 35px;
+    height: 35px;
+    background-color: #fff;
+    background-image: url("/Images/locateMe.png");
+    background-size: 35px 35px;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 4px -1px;
+    cursor: pointer;
+}
+
+.onMobile {
+    display: none !important;
+}
+
+/*******************/
+/*Responsive Design*/
+/*******************/
+
+@media screen and (max-width: 500px) {
+
+    .luckyContainer {
+        font-size: 14px;
+    }
+
+    select, option {
+        font-size: 14px;
+    }
+}
+
+/* IE10 and higher specific styles*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    #mapCanvas {
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 780px) {
+
+    .overview .logo {
+        width: 90%;
+    }
+
+    .contact {
+        width: 100%;
+    }
+
+    .categoryEnabled .title {
+        display: none;
+    }
+
+    .categoryLabel {
+        width: 30%;
+    }
+
+    .categoryEnabled #search {
+        width: calc(70% - 20px);
+    }
+
+    nav .showMenu:hover + nav .menu {
+        display: block;
+    }
+
+    #resultContainer {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .menuButton ul {
+        display: block;
+    }
+
+    .menuButton #menuTitle {
+        background: #03A9F4;
+    }
+
+    nav ul.nameSearch {
+        width: 100%;
+    }
+
+    nav ul.menu {
+        position: static;
+        display: none;
+    }
+
+    nav ul.menu li {
+        max-height: 60vh;
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+    }
+
+    nav ul.menu li, li.menuButton a {
+        width: 100%;
+    }
+
+    .searchBox {
+        width: 60%;
+    }
+
+    .categoryEnabled .searchBox {
+        width: 80%;
+    }
+
+    nav .showMenu {
+        display: block;
+    }
+
+    .mobileHidden {
+        display: none !important;
+    }
+
+    .onMobile {
+        display: block !important;
+    }
+}
+
+@media screen and (min-width: 781px) {
+    nav ul.menu {
+        display: block !important;
+    }
+}
+
+/* Android */
+/**Galaxy S3*/
+@media only screen and (device-width: 720px) and (device-height: 1280px) and (orientation: portrait) {
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 300px;
+    }
+}
+
+@media only screen and (device-width: 1280px) and (device-height: 720px) and (orientation: landscape) {
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 300px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+}
+
+/* ----------- Galaxy S4 ----------- */
+
+/* Portrait */
+@media screen
+and (device-width: 360px)
+and (device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 300px;
+    }
+
+}
+
+/* Landscape */
+@media screen
+and (device-width: 360px)
+and (device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: landscape) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 125px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+}
+
+/* ----------- Galaxy S5 ----------- */
+
+/* Portrait */
+@media screen
+and (device-width: 360px)
+and (device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 200px;
+    }
+
+}
+
+/* Landscape */
+@media screen
+and (device-width: 360px)
+and (device-height: 640px)
+and (-webkit-device-pixel-ratio: 3)
+and (orientation: landscape) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 75px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+
+}
+
+/** Apple Area **
+
+/*iPhone 4*/
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 200px;
+    }
+}
+
+/*iPhone 4 landscape*/
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (orientation: landscape)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 50px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+}
+
+/*iPhone 5*/
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 275px;
+    }
+}
+
+/*iPhone 5 landscape*/
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 568px)
+and (orientation: landscape)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 100px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+
+}
+
+/*iPhone 6*/
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 350px;
+    }
+}
+
+/*iPhone 6 landscape*/
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 667px)
+and (orientation: landscape)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 170px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+
+}
+
+/*iPhone 6+*/
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 400px;
+    }
+}
+
+/*iPhone 6+ landscape*/
+@media only screen
+and (min-device-width: 414px)
+and (max-device-width: 736px)
+and (orientation: landscape)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 190px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+}
+
+/*iPad non-Retina*/
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait) {
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 600px;
+    }
+}
+
+/*iPad non-Retina landscape*/
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: landscape) {
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 500px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+}
+
+/*iPad Retina*/
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait)
+and (-webkit-min-device-pixel-ratio: 2) {
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 600px;
+    }
+}
+
+/*iPad Retina landscape*/
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: landscape)
+and (-webkit-min-device-pixel-ratio: 2) {
+    .tabs [id^="tab"]:checked ~ [id^="tab-content"] {
+        max-height: 500px;
+    }
+
+    .result p {
+        font-size: 8px;
+        line-height: 9px;
+    }
+
+    .result h4 {
+        font-size: 10px;
+        line-height: 9px;
+    }
+
+    .result h3 {
+        font-size: 9px;
+        line-height: 9px;
+    }
+}

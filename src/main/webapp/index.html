@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<title>EIO - Events in Oldenburg</title>
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="EIO">
+
+	<!-- Include Glyphicons (icon font) -->
+	<!-- Test -->
+	<link rel="stylesheet" href="assets/glyphicons/css/glyphicons.css">
+
+	<!-- Include custom CSS -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Include Favicon -->
+	<link rel="shortcut icon" type="image/png" href="Images/favicon.png"/>
+
+	<!-- Include Google Maps API -->
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.20&key=AIzaSyBVQI-IaLc6JY_SCvUbUPVw_b3SIJkJCRQ"></script>
+	<script src="assets/spiderfier/oms.min.js"></script>
+
+	<!-- Include jQuery -->
+	<script src="assets/jquery/jquery-2.1.4.min.js"></script>
+
+	<!-- Include custom JS -->
+	<script src="js/eioScript.js"></script>
+
+	<!-- IE conditional Statement for IE-->
+	<!--[if IE]>
+	<style type="text/css" media="screen">
+		#mapCanvas {
+			margin-top: 50px;
+		}
+	</style>
+	<![endif]-->
+
+</head>
+<body>
+<nav>
+	<ul class="nameSearch">
+		<li class="title"><a href="index.html"><b>EIO</b><span class="mobileHidden"> <small><b>E</b>vents <b>I</b>n
+			<b>O</b>ldenburg
+		</small></span></a></li>
+		<li class="searchBox">
+			<label class="categoryLabel"> <a href="#" class="glyphicon glyphicon-remove categoryActive"></a> <span
+					class="categoryHTML"></span></label>
+
+			<input id="search" type="search" autocomplete="off" maxlength="75" placeholder="Suche nach Events"
+			       onchange="" value="">
+
+		</li>
+		<li><label for="showMenu" class="showMenu"><span class="glyphicon glyphicon-menu-hamburger"></span></label>
+			<input type="checkbox" id="showMenu" role="button">
+		</li>
+	</ul>
+	<ul class="menu">
+		<li class="menuButton">
+			<a href="#" id="menuTitle">Menü</a>
+			<ul class="dropDown">
+				<li class="childmenu">
+					<a href="#" data-href="#about" class="openContent"><span
+							class="glyphicon glyphicon-question-sign"></span>
+						Wie benutze ich EIO?</a></li>
+				<li class="childmenu">
+					<a href="#" data-href="#impressum" class="openContent"><span
+							class="glyphicon glyphicon-copyright-mark"></span>
+						Über uns</a>
+				</li>
+
+				<a href="#">
+					<span class="mobileHidden"> <span class="glyphicon glyphicon-share"></span> EIO teilen!</span>
+					<span class="onMobile" style="background-color: #03A9F4"><span
+							class="glyphicon glyphicon-triangle-bottom"></span> EIO teilen!</span>
+				</a>
+
+				<ul class="dropDown">
+					<li class="socialSharingButton">
+						<a href="https://www.facebook.com/sharer/sharer.php?u=ems.informatik.uni-oldenburg.de:5503"
+						   target="_blank">Auf <b>facebook</b> teilen</a>
+					</li>
+					<li class="socialSharingButton">
+						<a href="https://twitter.com/home?status=EIO%20-%20Events%20in%20Oldenburg%20-%20%23EIO%20%23Oldenburg%20http://ems.informatik.uni-oldenburg.de:5503"
+						   target="_blank">Auf <b>twitter</b> teilen</a>
+
+					</li>
+					<li class="socialSharingButton">
+						<a href="https://plus.google.com/share?url=ems.informatik.uni-oldenburg.de:5503"
+						   target="_blank">Auf <b>Google+</b> teilen</a>
+					</li>
+					<li class="socialSharingButton"> <!-- %0D%0A is new line-->
+						<a href="mailto:?subject=Schau dir mal 'EIO - Events in Oldenburg' an!&amp;body=Hey! %0D%0A %0D%0A Schau dir mal diese Seite an, die ich gefunden habe! Hier kannst du viele Events in und um Oldenburg finden! %0D%0A %0D%0A Hier ist der Link: http://ems.informatik.uni-oldenburg.de:5503 "
+						   title="Per <b> email </b> teilen">
+							<span class="glyphicon glyphicon-envelope"></span> Per <b>E-Mail</b> teilen
+						</a>
+					</li>
+				</ul>
+
+			</ul>
+		</li>
+	</ul>
+
+	<div id="resultContainer">
+		<ul class="tabs">
+			<li>
+				<input type="radio" name="tabs" id="tab1" checked/>
+				<label for="tab1" id="tabLabel1">Suche</label>
+
+				<div id="tab-content1" class="tab-content">
+					<!--Append results with ajax-->
+				</div>
+			</li>
+
+			<li>
+				<!--Ein Kommentar-->
+				<input type="radio" name="tabs" id="tab2"/>
+				<label for="tab2" id="tabLabel2">Kategorien</label>
+
+				<div id="tab-content2" class="tab-content">
+					<div id="categoryContainer">
+						<form>
+							<div class="subContainer">
+								<p>Musikrichtungen</p>
+
+								<div class="category_content">
+									<input type="radio" id="category_alternativ" value="alternativ" name="category"/>
+									<label class="categoryButton" id="cat1_1" for="category_alternativ">
+										<span class="glyphicon glyphicon-flag mobileHidden"></span>
+										Alternative
+									</label>
+								</div>
+								<div class="category_content">
+									<input type="radio" id="category_house" value="house" name="category"/>
+									<label class="categoryButton" id="cat1_2" for="category_house">
+										<span class="glyphicon glyphicon-home mobileHidden"></span>
+										House
+									</label>
+								</div>
+								<div class="category_content">
+									<input type="radio" id="category_party" value="party" name="category"/>
+									<label class="categoryButton" id="cat1_3" for="category_party">
+										<span class="glyphicon glyphicon-music mobileHidden"></span>
+										Party
+									</label>
+								</div>
+							</div>
+							<div class="subContainer">
+								<p>Lust & Laune</p>
+
+								<div class="category_content">
+									<input type="radio" id="category_single" value="single" name="category"/>
+									<label class="categoryButton" id="cat2_1" for="category_single">
+										<span class="glyphicon glyphicon-heart-empty mobileHidden"></span>
+										Single
+									</label>
+								</div>
+
+								<div class="category_content">
+									<input type="radio" id="category_chill" value="chill" name="category"/>
+									<label class="categoryButton" id="cat2_2" for="category_chill">
+										<span class="glyphicon glyphicon-hourglass mobileHidden"></span>
+										Chillen
+									</label>
+								</div>
+
+								<div class="category_content">
+									<input type="radio" id="category_cocktail" value="cocktail" name="category"/>
+									<label class="categoryButton" id="cat2_3" for="category_cocktail">
+										<span class="glyphicon glyphicon-glass mobileHidden"></span>
+										Cocktails
+									</label>
+								</div>
+							</div>
+							<div class="subContainer">
+								<p>Aktionen</p>
+
+								<div class="category_content">
+									<input type="radio" id="category_student" value="student" name="category"/>
+									<label class="categoryButton" id="cat3_1" for="category_student">
+										<span class="glyphicon glyphicon-education mobileHidden"></span>
+										Studenten
+									</label>
+								</div>
+								<div class="category_content">
+									<input type="radio" id="category_preis" value="preis" name="category"/>
+									<label class="categoryButton" id="cat3_2" for="category_preis">
+										<span class="glyphicon glyphicon-piggy-bank mobileHidden"></span>
+										Sparen
+									</label>
+								</div>
+								<div class="category_content">
+									<input type="radio" id="category_kultur" value="kultur" name="category"/>
+									<label class="categoryButton" id="cat3_3" for="category_kultur">
+										<span class="glyphicon glyphicon-education mobileHidden"></span>
+										Kultur
+									</label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</li>
+
+			<li>
+				<input type="radio" name="tabs" id="tab3"/>
+				<label for="tab3" id="tabLabel3">Auf gut Glück</label>
+
+				<div id="tab-content3" class="tab-content">
+					<div class="luckyContainer">
+						Ich habe Lust auf
+						<select id="activity">
+							<option value="party">feiern</option>
+							<option value="chillen">entspannen</option>
+							<option value="single">flirten</option>
+							<option value="kultur">Anspruch</option>
+						</select>
+						in
+						<select id="city">
+							<option value="oldenburg">Oldenburg</option>
+							<option value="bremen">Bremen</option>
+						</select>
+						<br>
+						<input type="submit" id="feelingLucky" class="formSubmit" value="Auf gut Glück!"/>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+</nav>
+<main>
+	<div id="mapCanvas"></div>
+</main>
+
+<article id="about">
+	<header>
+		Wie benutze ich EIO?
+	</header>
+	<div class="content">
+
+		<video controls width="50%" style="float:right;">
+			<source src="Videos/EioDemoFilm.ogv" type="video/ogg"/>
+			<source src="Videos/EioDemoFilm.mp4" type="video/mp4"/>
+		</video>
+
+		Lass dich bei deiner Suche von folgenden Suchbegriffen inspirieren oder überlege dir eigene Kombinationen:<br>
+		<img src="Images/examples/example0.png"><br>
+		<img src="Images/examples/example1.png"><br>
+		<img src="Images/examples/example2.png"><br>
+		<img src="Images/examples/example3.png"><br>
+		<img src="Images/examples/example4.png"><br>
+		<img src="Images/examples/example5.png"><br>
+		<img src="Images/examples/example6.png">
+		
+		<div class="close">
+			<a href="#">
+				Schließen
+			</a>
+		</div>
+	</div>
+</article>
+<article id="impressum">
+	<header>
+		Über uns
+	</header>
+	<div class="content">
+		<div class="overview">
+			<b>EIO</b> ist im Rahmen des Moduls Internettechnologien an der <a href="http://uni-oldenburg.de" target="_blank">Uni Oldenburg</a> entstanden.
+			<image class="logo" src="Images/logo.png"></image>
+		</div>
+			<div class="developer">
+				<h2>Entwickler:</h2>
+				<ul>
+					<li>Dario Imsande</li>
+					<li>Adrian Jagusch</li>
+					<li>Hendrik Kahlen</li>
+					<li>Jannik Spieker</li>
+				</ul>
+			</div>
+			<div class="contact">
+				<h2>Zum Modul: </h2>
+				Weitere Informationen zum Modul Internettechnologien, den Inhalten und Ansprechpartnern, sind auf der Webseite des Departments einsehbar:<br><br>
+
+				<a href="https://www.uni-oldenburg.de/en/computingscience/media-informatics/teaching/lectures/internet-technologien/" target="_blank">Department Informatik der Uni Oldenburg</a>
+			</div>
+		<div class="close">
+			<a href="#">
+				Schließen
+			</a>
+		</div>
+	</div>
+</article>
+
+<div id="locateMeButton"></div>
+
+</body>
+</html>
